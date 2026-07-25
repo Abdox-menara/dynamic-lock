@@ -20,6 +20,13 @@ jobs:
       - name: Set up the Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Install SDK platform
+        run: |
+          SDK="${ANDROID_SDK_ROOT:-$ANDROID_HOME}"
+          echo "SDK: $SDK"
+          yes | "$SDK/cmdline-tools/latest/bin/sdkmanager" "platforms;android-34" 2>&1
+          echo "Platform installed"
+
       - name: Build the debug APK
         run: ./gradlew assembleDebug --no-daemon --stacktrace
 
