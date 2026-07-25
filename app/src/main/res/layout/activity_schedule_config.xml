@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ink"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOCK SCHEDULE"
+        android:textColor="@color/muted"
+        android:textSize="12sp"
+        android:letterSpacing="0.1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/etPackageName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_card"
+        android:padding="16dp"
+        android:hint="Package name (e.g. com.whatsapp)"
+        android:textColor="@color/on_surface"
+        android:textColorHint="@color/muted"
+        android:textSize="16sp" />
+
+    <TextView style="@style/SectionLabel"
+        android:layout_marginTop="16dp"
+        android:text="START TIME" />
+
+    <TimePicker
+        android:id="@+id/timePickerStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner" />
+
+    <TextView style="@style/SectionLabel"
+        android:layout_marginTop="12dp"
+        android:text="END TIME" />
+
+    <TimePicker
+        android:id="@+id/timePickerEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner" />
+
+    <Switch
+        android:id="@+id/switchEnabled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Enable schedule"
+        android:textColor="@color/on_surface" />
+
+    <Button
+        android:id="@+id/btnSaveSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/accent"
+        android:text="Save Schedule"
+        android:textColor="@color/ink"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/danger"
+        android:text="Delete Schedule"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:visibility="gone" />
+</LinearLayout>

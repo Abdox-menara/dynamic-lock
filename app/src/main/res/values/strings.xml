@@ -6,6 +6,7 @@
     <string name="title_vault">Private Vault</string>
     <string name="title_note">Note</string>
     <string name="title_locked_apps">Locked Apps</string>
+    <string name="title_lock_schedule">Lock Schedule</string>
 
     <string name="open_vault">Open Private Vault</string>
     <string name="configure_pin">Configure PIN Rule</string>
@@ -38,4 +39,50 @@
     <string name="grant_battery">Ignore battery optimization</string>
     <string name="start_service">Start protection</string>
     <string name="stop_service">Stop protection</string>
+
+    <!-- v5: Stealth Mode -->
+    <string name="stealth_label">System Tools</string>
+    <string name="stealth_mode">Stealth Mode</string>
+    <string name="stealth_mode_desc">Hide app icon from launcher</string>
+
+    <!-- v5: PIN Recovery -->
+    <string name="forgot_pin">Forgot PIN?</string>
+    <string name="recovery_title">Recovery Access</string>
+    <string name="recovery_hint">Enter your 12-character recovery code</string>
+    <string name="recovery_wrong">Invalid recovery code</string>
+    <string name="recovery_success">PIN rule has been reset to default</string>
+    <string name="recovery_code_label">Your Recovery Code</string>
+    <string name="recovery_code_warning">Save this somewhere safe! You won\'t see it again.</string>
+    <string name="recovery_code_copied">Recovery code copied to clipboard</string>
+
+    <!-- v5: Intruder Selfie -->
+    <string name="intruder_selfie">Intruder Selfie</string>
+    <string name="intruder_selfie_desc">Capture photo on failed PIN attempt</string>
+    <string name="intruder_captured">Intruder photo captured</string>
+    <string name="no_intruders">No intruder photos</string>
+
+    <!-- v5: Vault Search -->
+    <string name="search_hint">Search notes…</string>
+    <string name="no_notes_found">No matching notes</string>
+
+    <!-- v5: Lock Schedule -->
+    <string name="lock_schedule">Lock Schedule</string>
+    <string name="schedule_from">From</string>
+    <string name="schedule_to">To</string>
+    <string name="schedule_enabled">Enable schedule</string>
+
+    <!-- v5: WiFi Trust -->
+    <string name="wiFi_trust">Trusted WiFi Networks</string>
+    <string name="wiFi_trust_desc">Auto-unlock when on trusted WiFi</string>
+    <string name="trusted_ssid">Trusted network name (SSID)</string>
+    <string name="add_network">Add network</string>
+
+    <!-- v5: Dialer Code -->
+    <string name="dialer_code">Dialer access: *#*#1234#*#*</string>
+
+    <!-- v5: General -->
+    <string name="confirm_delete_title">Confirm Delete</string>
+    <string name="confirm_delete_msg">Are you sure? This cannot be undone.</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
 </resources>

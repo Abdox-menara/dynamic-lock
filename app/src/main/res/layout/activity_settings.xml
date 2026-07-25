@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -104,6 +105,7 @@
             android:textColor="@color/muted"
             android:textSize="14sp" />
 
+        <!-- v4 Options -->
         <CheckBox
             android:id="@+id/cbScramble"
             android:layout_width="match_parent"
@@ -119,37 +121,70 @@
             android:text="Allow fingerprint / face unlock"
             android:textColor="@color/on_surface" />
 
+        <!-- v5: Stealth Mode -->
+        <CheckBox
+            android:id="@+id/cbStealth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stealth Mode — hide app icon"
+            android:textColor="@color/on_surface" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="When hidden, access via dialer: *#*#1234#*#*"
+            android:textColor="@color/muted"
+            android:textSize="12sp" />
+
+        <!-- v5: Intruder Selfie -->
+        <CheckBox
+            android:id="@+id/cbIntruderSelfie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Intruder Selfie — capture photo on wrong PIN"
+            android:textColor="@color/on_surface" />
+
+        <!-- v5: PIN Recovery -->
         <TextView style="@style/SectionLabel" android:layout_marginTop="16dp"
-            android:text="VAULT AUTO-LOCK" />
+            android:text="PIN RECOVERY" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <com.google.android.material.slider.Slider
-                android:id="@+id/sliderAutoLock"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:valueFrom="0"
-                android:valueTo="300"
-                android:stepSize="5" />
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="14dp">
             <TextView
-                android:id="@+id/tvAutoLockVal"
+                android:id="@+id/tvRecoveryCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/on_surface"
+                android:textSize="14sp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShowRecovery"
+                style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:textColor="@color/muted"
-                android:textSize="13sp"
-                android:minWidth="100dp" />
+                android:layout_marginTop="6dp"
+                android:text="Generate Recovery Code" />
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSave"
-            android:layout_width="match_parent" android:layout_height="56dp"
-            android:layout_marginTop="18dp" android:text="@string/save"
-            app:cornerRadius="16dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto" />
-    </LinearLayout>
-</ScrollView>
+        <!-- v5: WiFi Trust -->
+        <TextView style="@style/SectionLabel" android:layout_marginTop="16dp"
+            android:text="TRUSTED WIFI" />
+        <CheckBox
+            android:id="@+id/cbWiFiTrust"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Auto-unlock on trusted WiFi"
+            android:textColor="@color/on_surface" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/etSsid"
+                android:layout_width="0dp"
+                android:layout_

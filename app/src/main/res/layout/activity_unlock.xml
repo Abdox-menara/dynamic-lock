@@ -63,4 +63,15 @@
         android:text="@string/use_biometric"
         android:textColor="@color/accent"
         android:visibility="gone" />
+
+    <!-- v5: Forgot PIN? / Recovery -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnForgotPin"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgot_pin"
+        android:textColor="@color/muted"
+        android:textSize="13sp"
+        android:visibility="gone" />
 </LinearLayout>

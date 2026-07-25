@@ -18,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dynamiclock.R
 import com.example.dynamiclock.databinding.ActivityLockedAppsBinding
 import com.example.dynamiclock.databinding.ItemAppBinding
 
@@ -77,13 +78,13 @@ class LockedAppsActivity : AppCompatActivity() {
     }
 
     private fun refreshButtons() {
-        binding.btnUsage.text = mark(getString(com.example.dynamiclock.R.string.grant_usage), hasUsageAccess())
-        binding.btnOverlay.text = mark(getString(com.example.dynamiclock.R.string.grant_overlay), Settings.canDrawOverlays(this))
-        binding.btnNotif.text = mark(getString(com.example.dynamiclock.R.string.grant_notifications), hasNotifications())
-        binding.btnBattery.text = mark(getString(com.example.dynamiclock.R.string.grant_battery), ignoringBattery())
+        binding.btnUsage.text = mark(getString(R.string.grant_usage), hasUsageAccess())
+        binding.btnOverlay.text = mark(getString(R.string.grant_overlay), Settings.canDrawOverlays(this))
+        binding.btnNotif.text = mark(getString(R.string.grant_notifications), hasNotifications())
+        binding.btnBattery.text = mark(getString(R.string.grant_battery), ignoringBattery())
         binding.btnToggle.text = getString(
-            if (LockManager.isEnabled(this)) com.example.dynamiclock.R.string.stop_service
-            else com.example.dynamiclock.R.string.start_service
+            if (LockManager.isEnabled(this)) R.string.stop_service
+            else R.string.start_service
         )
     }
 
@@ -174,6 +175,14 @@ class LockedAppsActivity : AppCompatActivity() {
                 LockManager.setLocked(this@LockedAppsActivity, row.pkg, checked)
             }
             holder.b.root.setOnClickListener { holder.b.cb.toggle() }
+
+            // v5: Schedule button - long press to configure schedule
+            holder.b.root.setOnLongClickListener {
+                val intent = Intent(this@LockedAppsActivity, ScheduleConfigActivity::class.java)
+                intent.putExtra("package", row.pkg)
+                startActivity(intent)
+                true
+            }
         }
     }
 }

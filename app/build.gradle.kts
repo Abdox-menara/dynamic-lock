@@ -11,8 +11,8 @@ android {
         applicationId = "com.example.dynamiclock"
         minSdk = 24
         targetSdk = 34
-        versionCode = 4
-        versionName = "4.0"
+        versionCode = 5
+        versionName = "5.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -55,6 +55,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-process:2.8.4")
     implementation("androidx.biometric:biometric:1.1.0")
 
-    // v2: unit tests for the PIN engine
+    // v5: camera for intruder selfie, ML Kit face detection
+    implementation("androidx.camera:camera-camera2:1.4.0")
+    implementation("androidx.camera:camera-lifecycle:1.4.0")
+    implementation("androidx.camera:camera-view:1.4.0")
+
+    // v5: unit tests
     testImplementation("junit:junit:4.13.2")
 }

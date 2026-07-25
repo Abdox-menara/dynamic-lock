@@ -2,30 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Restart the lock service after reboot -->
+    <!-- Core permissions (v4) -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-
-    <!-- Foreground service that watches which app is in the foreground -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
-
-    <!-- Notification for the foreground service (Android 13+) -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-    <!-- Detect the current foreground app. Special access: granted by the user in
-         Settings > Apps > Special access > Usage access. -->
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
-
-    <!-- Show the unlock screen over other apps (also lets the service start the
-         unlock Activity from the background). Granted via "Display over other apps". -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
-    <!-- List installed apps so the user can choose which to lock. -->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
+
+    <!-- v5: Camera for intruder selfie -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- v5: Location for WiFi trust zones (approximate is enough) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name=".App"
@@ -37,10 +34,13 @@
         android:theme="@style/Theme.DynamicLock"
         tools:targetApi="34">
 
+        <!-- Main launcher activity (v5: conditionally hidden in stealth mode) -->
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true">
-            <intent-filter>
+            android:exported="true"
+            android:label="@string/app_name"
+            android:icon="@mipmap/ic_launcher">
+            <intent-filter android:label="@string/app_name">
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -54,6 +54,33 @@
                 android:resource="@xml/shortcuts" />
         </activity>
 
+        <!-- v5: Secret stealth launcher — alias with different icon/name.
+             Enabled/disabled programmatically based on stealth mode option. -->
+        <activity-alias
+            android:name=".ui.MainActivityAlias"
+            android:enabled="true"
+            android:exported="true"
+            android:targetActivity=".ui.MainActivity"
+            android:label="@string/stealth_label"
+            android:icon="@mipmap/ic_launcher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- v5: Secret access via dialer code — type *#*#<code>#*#* to open -->
+        <activity
+            android:name=".ui.SecretDialerActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="android-app" android:host="com.example.dynamiclock" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".ui.SettingsActivity"
             android:exported="false"
@@ -64,7 +91,6 @@
             android:exported="false"
             android:label="@string/title_current_pin" />
 
-        <!-- Full-screen unlock gate. Reused by the vault and the app-locker. -->
         <activity
             android:name=".ui.UnlockActivity"
             android:exported="false"
@@ -87,6 +113,12 @@
             android:name=".locker.LockedAppsActivity"
             android:exported="false"
             android:label="@string/title_locked_apps" />
+
+        <!-- v5: Lock schedule configuration -->
+        <activity
+            android:name=".locker.ScheduleConfigActivity"
+            android:exported="false"
+            android:label="@string/title_lock_schedule" />
 
         <service
             android:name=".locker.AppLockService"
@@ -117,6 +149,14 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+
+        <!-- v5: Intruder selfie capture (camera preview-based) -->
+        <activity
+            android:name=".security.IntruderCaptureActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.NoDisplay" />
 
     </application>
 </manifest>

@@ -7,6 +7,22 @@
     android:orientation="vertical"
     android:padding="20dp">
 
+    <!-- v5: Search bar -->
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_card"
+        android:padding="12dp"
+        android:hint="@string/search_hint"
+        android:textColor="@color/on_surface"
+        android:textColorHint="@color/muted"
+        android:textSize="15sp"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:drawablePadding="8dp"
+        android:inputType="text" />
+
     <TextView style="@style/SectionLabel" android:text="NOTES" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -22,10 +38,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="No notes yet."
+        android:text="@string/no_notes_found"
         android:textColor="@color/muted"
         android:textSize="14sp"
         android:visibility="gone" />
+
+    <!-- v5: Intruder Photos Section -->
+    <TextView
+        android:id="@+id/tvIntruderSection"
+        style="@style/SectionLabel"
+        android:layout_marginTop="14dp"
+        android:text="@string/intruder_selfie"
+        android:visibility="gone" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"
+        android:id="@+id/llIntruderPhotos"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/llIntruderPhotosInner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
 
     <TextView style="@style/SectionLabel" android:layout_marginTop="14dp" android:text="PHOTOS" />
 

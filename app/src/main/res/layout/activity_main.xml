@@ -98,5 +98,16 @@
             android:text="Tip: if you ever forget the current PIN, use Show Current PIN. To protect that screen too, add Dynamic Lock to your locked apps."
             android:textColor="@color/muted"
             android:textSize="12sp" />
+
+        <!-- v5: Dialer code hint -->
+        <TextView
+            android:id="@+id/tvDialerHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/dialer_code"
+            android:textColor="@color/muted"
+            android:textSize="11sp"
+            android:gravity="center" />
     </LinearLayout>
 </ScrollView>

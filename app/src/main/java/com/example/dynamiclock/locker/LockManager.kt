@@ -4,8 +4,8 @@ import android.content.Context
 import com.example.dynamiclock.security.Crypto
 
 /**
- * Persists which apps are locked and whether protection is enabled, and tracks the
- * single app the user has currently unlocked (in memory only).
+ * v5: Persists which apps are locked, whether protection is enabled, tracks the
+ * single app the user has currently unlocked, and integrates with LockScheduler.
  */
 object LockManager {
     private const val PREFS = "locker"
@@ -19,7 +19,11 @@ object LockManager {
     fun lockedApps(ctx: Context): MutableSet<String> =
         HashSet(prefs(ctx).getStringSet(KEY_APPS, emptySet()) ?: emptySet())
 
-    fun isLocked(ctx: Context, pkg: String) = lockedApps(ctx).contains(pkg)
+    fun isLocked(ctx: Context, pkg: String): Boolean {
+        // Check if schedule auto-unlocks this app
+        if (LockScheduler.shouldAutoUnlock(ctx, pkg)) return false
+        return lockedApps(ctx).contains(pkg)
+    }
 
     fun setLocked(ctx: Context, pkg: String, locked: Boolean) {
         val set = lockedApps(ctx)
