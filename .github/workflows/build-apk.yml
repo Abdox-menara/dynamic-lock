@@ -11,9 +11,6 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
 
-      - name: Unzip the project
-        run: unzip -o DynamicLock.zip
-
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -24,7 +21,6 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Build the debug APK
-        working-directory: DynamicLock
         run: |
           gradle wrapper --gradle-version 8.7
           ./gradlew assembleDebug --no-daemon --stacktrace
@@ -33,5 +29,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: DynamicLock-debug-apk
-          path: DynamicLock/app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
