@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ink"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="28dp">
+
+    <TextView
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="YOUR PIN RIGHT NOW" android:textColor="@color/muted"
+        android:textSize="13sp" android:letterSpacing="0.15" />
+
+    <TextView
+        android:id="@+id/tvPin"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="14dp" android:text="—"
+        android:letterSpacing="0.15"
+        android:textColor="@color/accent" android:textSize="52sp" android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvRule"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="18dp" android:gravity="center"
+        android:text="" android:textColor="@color/on_surface" android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:id="@+id/tvHint"
+        android:layout_marginTop="24dp" android:gravity="center"
+        android:text="Tap the PIN to reveal it · updates automatically"
+        android:textColor="@color/muted" android:textSize="13sp" />
+</LinearLayout>

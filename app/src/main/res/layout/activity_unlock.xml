@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ink"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingHorizontal="28dp"
+    android:paddingTop="72dp"
+    android:paddingBottom="28dp">
+
+    <ImageView
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:contentDescription="@string/app_name" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/enter_pin"
+        android:textColor="@color/on_surface"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvEntry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:letterSpacing="0.35"
+        android:minHeight="34dp"
+        android:text=""
+        android:textColor="@color/accent"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text=""
+        android:textColor="@color/danger"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:id="@+id/keypad"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
+        android:orientation="vertical" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBiometric"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/use_biometric"
+        android:textColor="@color/accent"
+        android:visibility="gone" />
+</LinearLayout>

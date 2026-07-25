@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView style="@style/SectionLabel" android:text="PRESETS" />
+        <GridLayout
+            android:id="@+id/gridPresets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <TextView style="@style/SectionLabel" android:layout_marginTop="20dp"
+            android:text="BUILD YOUR OWN (tap to append)" />
+        <GridLayout
+            android:id="@+id/gridComponents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Sequence" android:textColor="@color/muted" android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tvSequence"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="4dp" android:text="(empty)"
+                android:textColor="@color/on_surface" android:textSize="16sp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClear"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Clear sequence" />
+
+        <TextView style="@style/SectionLabel" android:layout_marginTop="12dp"
+            android:text="PIN LENGTH" />
+        <TextView
+            android:id="@+id/tvPinLength"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="4 digits"
+            android:textColor="@color/muted"
+            android:textSize="14sp" />
+
+        <TextView style="@style/SectionLabel" android:layout_marginTop="12dp"
+            android:text="TIME OFFSET (MINUTES, +/-)" />
+        <EditText
+            android:id="@+id/etOffset"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:inputType="numberSigned"
+            android:text="0"
+            android:textColor="@color/on_surface"
+            android:autofillHints="" />
+
+        <TextView style="@style/SectionLabel" android:layout_marginTop="12dp"
+            android:text="ADD-ONS" />
+        <GridLayout
+            android:id="@+id/gridAddons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:columnCount="2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="18dp">
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="PIN RIGHT NOW" android:textColor="@color/muted" android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tvPreview"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="6dp" android:text="—"
+                android:textColor="@color/accent" android:textSize="34sp" android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvStrength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Strength: —"
+            android:textColor="@color/muted"
+            android:textSize="14sp" />
+
+        <CheckBox
+            android:id="@+id/cbScramble"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Scramble the keypad each time"
+            android:textColor="@color/on_surface" />
+
+        <CheckBox
+            android:id="@+id/cbBiometric"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Allow fingerprint / face unlock"
+            android:textColor="@color/on_surface" />
+
+        <TextView style="@style/SectionLabel" android:layout_marginTop="16dp"
+            android:text="VAULT AUTO-LOCK" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderAutoLock"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:valueFrom="0"
+                android:valueTo="300"
+                android:stepSize="5" />
+            <TextView
+                android:id="@+id/tvAutoLockVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textColor="@color/muted"
+                android:textSize="13sp"
+                android:minWidth="100dp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent" android:layout_height="56dp"
+            android:layout_marginTop="18dp" android:text="@string/save"
+            app:cornerRadius="16dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto" />
+    </LinearLayout>
+</ScrollView>

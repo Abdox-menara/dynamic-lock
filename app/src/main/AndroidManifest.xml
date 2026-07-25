@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Restart the lock service after reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- Foreground service that watches which app is in the foreground -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <!-- Notification for the foreground service (Android 13+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Detect the current foreground app. Special access: granted by the user in
+         Settings > Apps > Special access > Usage access. -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- Show the unlock screen over other apps (also lets the service start the
+         unlock Activity from the background). Granted via "Display over other apps". -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- List installed apps so the user can choose which to lock. -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DynamicLock"
+        tools:targetApi="34">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.example.dynamiclock.OPEN_VAULT" />
+                <action android:name="com.example.dynamiclock.SHOW_PIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_settings" />
+
+        <activity
+            android:name=".ui.CurrentPinActivity"
+            android:exported="false"
+            android:label="@string/title_current_pin" />
+
+        <!-- Full-screen unlock gate. Reused by the vault and the app-locker. -->
+        <activity
+            android:name=".ui.UnlockActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.DynamicLock.Unlock" />
+
+        <activity
+            android:name=".vault.VaultActivity"
+            android:exported="false"
+            android:label="@string/title_vault" />
+
+        <activity
+            android:name=".vault.NoteEditorActivity"
+            android:exported="false"
+            android:label="@string/title_note" />
+
+        <activity
+            android:name=".locker.LockedAppsActivity"
+            android:exported="false"
+            android:label="@string/title_locked_apps" />
+
+        <service
+            android:name=".locker.AppLockService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Locks user-selected apps behind a rotating PIN" />
+        </service>
+
+        <receiver
+            android:name=".locker.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".locker.LockTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+    </application>
+</manifest>

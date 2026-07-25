@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Dynamic Lock</string>
+
+    <string name="title_settings">PIN Rule</string>
+    <string name="title_current_pin">Current PIN</string>
+    <string name="title_vault">Private Vault</string>
+    <string name="title_note">Note</string>
+    <string name="title_locked_apps">Locked Apps</string>
+
+    <string name="open_vault">Open Private Vault</string>
+    <string name="configure_pin">Configure PIN Rule</string>
+    <string name="show_current_pin">Show Current PIN</string>
+    <string name="locked_apps">Lock Other Apps</string>
+
+    <string name="enter_pin">Enter the current dynamic PIN</string>
+    <string name="wrong_pin">Wrong PIN. Try again.</string>
+    <string name="locked_out">Too many attempts. Wait %1$ds</string>
+    <string name="use_biometric">Use fingerprint / face</string>
+    <string name="biometric_subtitle">Confirm your identity</string>
+    <string name="use_pin">Use PIN</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="add_note">Add note</string>
+    <string name="add_photo">Add photo</string>
+
+    <string name="hint_title">Title</string>
+    <string name="hint_body">Write something…</string>
+
+    <string name="vault_autolock">Vault auto-lock</string>
+    <string name="pin_length">PIN length</string>
+
+    <string name="service_channel_name">App Lock</string>
+    <string name="service_running">Dynamic Lock is guarding your apps</string>
+
+    <string name="grant_usage">Grant Usage Access</string>
+    <string name="grant_overlay">Grant Display-over-apps</string>
+    <string name="grant_notifications">Allow Notifications</string>
+    <string name="grant_battery">Ignore battery optimization</string>
+    <string name="start_service">Start protection</string>
+    <string name="stop_service">Stop protection</string>
+</resources>

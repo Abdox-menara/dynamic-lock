@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="open_vault"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:shortcutShortLabel="@string/open_vault">
+        <intent
+            android:action="com.example.dynamiclock.OPEN_VAULT"
+            android:targetPackage="com.example.dynamiclock"
+            android:targetClass="com.example.dynamiclock.ui.MainActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="show_pin"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:shortcutShortLabel="@string/show_current_pin">
+        <intent
+            android:action="com.example.dynamiclock.SHOW_PIN"
+            android:targetPackage="com.example.dynamiclock"
+            android:targetClass="com.example.dynamiclock.ui.MainActivity" />
+    </shortcut>
+</shortcuts>
